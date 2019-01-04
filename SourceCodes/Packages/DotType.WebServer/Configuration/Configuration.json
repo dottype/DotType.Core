@@ -1,0 +1,21 @@
+{
+    "WebServer":
+    {
+        "Http":
+        {
+            "Enabled": true,
+            "Port": 80
+        },
+        "Https":
+        {
+            "Enabled": false,
+            "Port": 443,
+            "Options":
+            {
+                "ca":"/Certificates/ca_bundle.crt",
+                "key": "/Certificates/private.key",
+                "cert": "/Certificates/certificate.crt"
+            }
+        } 
+    }
+}
