@@ -11,6 +11,7 @@ The DotType credo is simplicity. Everything that you need for install and run th
 1. Install [Node.Js](https://nodejs.org/en/).
    Nodejs will install [npm](https://www.npmjs.com) - a package manager for javascript
 2. Install TypeScript
+
    ```bash
    npm install -g typescript
    ```
@@ -19,6 +20,7 @@ The DotType credo is simplicity. Everything that you need for install and run th
 5. Open Visual Studio Code, select "Open folder" and navigate to the saved repository folder.
 6. Press "ctrl+shift+B" (or cmd+shift+B on mac) and select build.
 7. Open terminal at Build folder an enter the following command:
+
    ```bash
    node --inspect program
    ```
