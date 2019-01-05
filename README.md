@@ -24,4 +24,4 @@ The DotType credo is simplicity. Everything that you need for install and run th
    ```
 8. Open localhost in your browser:
 
-![localhost](https://github.com/dottype/DotType.Mvc/blob/master/Images/dottype_localhost.png§)
+![localhost](https://github.com/dottype/DotType.Mvc/blob/master/Images/dottype_localhost.png)
