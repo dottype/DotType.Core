@@ -32,3 +32,11 @@ The DotType credo is simplicity. Everything that you need for install and run th
 ![localhost](https://github.com/dottype/DotType.Mvc/blob/master/Images/dottype_localhost.png)
 
 9. Done!
+
+## Contributing
+
+There are several ways contribute to DotType.
+
+* [Submit bugs](https://github.com/dottype/DotType.Mvc/issues) and help us verify fixes.
+* Review the [source code changes](https://github.com/dottype/DotType.Mvc/pulls).
+* Help us with documentation
