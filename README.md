@@ -8,8 +8,8 @@ DotType MVC is a very fast, lighweight and simple server-side framework based on
 ## Installing
 The DotType credo is simplicity. Everything that you need for install and run the framework is here.
 
-1. Install [Node.Js](https://nodejs.org/en/)
-   Nodejs will install [npm](package manager for javascript) - a package manager for javascript
+1. Install [Node.Js](https://nodejs.org/en/).
+   Nodejs will install [npm](https://www.npmjs.com) - a package manager for javascript
 2. Install TypeScript
    ```bash
    npm install -g typescript
