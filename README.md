@@ -22,4 +22,4 @@ The DotType credo is simplicity. Everything that you need for install and run th
    ```bash
    node --inspect program
    ```
-8. open localhost
+8. open localhost in your browser
