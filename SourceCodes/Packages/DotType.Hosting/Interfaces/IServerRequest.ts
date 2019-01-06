@@ -7,7 +7,7 @@ export interface IServerRequest
     /** Gets the http version. */
     readonly HttpVersion :string;
 
-    /** Gets the request header. */
+    /** Gets the request headers. */
     readonly Headers: Collection<NameValueObject>;
 
     /** Gets request method. */
