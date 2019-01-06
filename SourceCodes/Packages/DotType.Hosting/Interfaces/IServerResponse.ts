@@ -1,4 +1,3 @@
-import { ServerResponse } from "http";
 import { Collection } from "../../DotType/Collection<T>";
 
 /** interface for a server response */
@@ -8,10 +7,10 @@ export interface IServerResponse
     StatusCode: number;
 
     /** Ends the server response. */
-    End(): void; 
+    EndAsync(): Promise<void>
 
     /** Ends the server response. */
-    End(cunk?: any): void; 
+    EndAsync(cunk?: any): Promise<void>
 
     /** Write a message to the output buffer. */
     WriteAsync(text: string): Promise<void>;
@@ -20,5 +19,5 @@ export interface IServerResponse
     SetHeader(name: string, value: number | string | string[]): void;
 
     /** Event that fires when IserverResponse.End() is called */
-    OnEnd: Collection<() => void>;
+    OnEnd: Collection<(response: IServerResponse)=>void>;
 }

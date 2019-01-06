@@ -68,7 +68,7 @@ export class MvcWebServerMiddleware implements IMiddleware
         }   
                  
         httpContext.Response.SetHeader("Content-Type", "text/html; charset=utf-8");
-        httpContext.Response.End();
+        await httpContext.Response.EndAsync();
     }
 
     public async OnErrorAsync(exception: Exception): Promise<void>

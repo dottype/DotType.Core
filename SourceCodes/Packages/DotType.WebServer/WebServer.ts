@@ -107,7 +107,7 @@ export class WebServer implements IWebServer
                     }
                 }
 
-                httpContext.Response.End();
+                await httpContext.Response.EndAsync();
             }
         }
         catch (exception) 

@@ -3,6 +3,7 @@ import { IHttpContext } from "../DotType.Hosting/Interfaces/IHttpContext";
 import { Exception } from "../DotType/Exception";
 import { NameValueObject } from "../DotType/NameValueObject";
 import { Collection } from "../DotType/Collection<T>";
+import { IServerResponse } from "../DotType.Hosting/Interfaces/IServerResponse";
 import "../DotType.WebServer.Cookie/Extensions/DotType.WebServer.Cookie.IServerRequestExtensions";
 import "../DotType.WebServer.Cookie/Extensions/DotType.WebServer.Cookie.IServerResponseExtensions";
 
@@ -14,14 +15,23 @@ export class CookieMiddleware implements IMiddleware
     
     public async OnRequestAsync(httpContext: IHttpContext, caller: IMiddleware): Promise<void>
     {
-        if(httpContext.Request.Url == "/favicon.ico")
+        if(httpContext.Request.Url === "/favicon.ico")
         {
             return;
         }
         
-        httpContext.Request.Cookies = httpContext.Response.Cookies =this.ParseCookies(httpContext.Request.Headers.Find(t=>t.Name == "cookie"));
+        httpContext.Request.Cookies = httpContext.Response.Cookies = this.ParseCookies(httpContext.Request.Headers.Find(t=>t.Name == "cookie"));
+        httpContext.Response.OnEnd.Add(this.End);
     }
     
+    public async End(response: IServerResponse): Promise<void>
+    {
+        response.Cookies.ForEach(item => 
+        {
+            response.WriteAsync(item.Name); 
+        });
+    }
+
     public async OnErrorAsync(exception: Exception): Promise<void>
     {
         console.error(exception);

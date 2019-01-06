@@ -40,26 +40,28 @@ export class Response implements IServerResponse
         this.serverResponse = serverResponse;
     }
 
-    public OnEnd: Collection<() => void> = new Collection<() => void>();
+    public OnEnd: Collection<(response: IServerResponse)=>void> = new Collection<(response: IServerResponse)=>void>();
 
-    public End(): void;
+    public async EndAsync(): Promise<void>;
 
-    public End(chunk?: any): void
+    public async EndAsync(chunk?: any): Promise<void>
     {
-        if(this.OnEnd)
+        try
         {
-            this.OnEnd.ForEach
-            (
-                item =>
-                {
-                    item.apply(item);
-                }
-            )
+            this.OnEnd.ForEach(item =>
+            {
+                item.call(item, this);
+            });
+            this.OnEnd.Clear();
+        }
+        catch(exception)
+        {
+            console.log(exception);
         }
 
-        this.ReleaseStatusCode();
-        this.ReleaseHeaders();
-        this.ReleaseWriteBuffer();
+        await this.ReleaseStatusCode();
+        await this.ReleaseHeadersAsync();
+        await this.ReleaseWriteBufferAsync();
         
         this.EndResponse(chunk);
     }
@@ -83,7 +85,7 @@ export class Response implements IServerResponse
         this.serverResponse.end(chunk);
     }
 
-    public async ReleaseWriteBuffer(): Promise<void>
+    private async ReleaseWriteBufferAsync(): Promise<void>
     {
         this.writeBuffer.forEach(item => 
         {
@@ -92,7 +94,7 @@ export class Response implements IServerResponse
         this.writeBuffer = [];
     }
 
-    public async ReleaseHeaders(): Promise<void>
+    private async ReleaseHeadersAsync(): Promise<void>
     {
         this.headersBuffer.ForEach(item =>
         {
@@ -102,7 +104,7 @@ export class Response implements IServerResponse
         this.headersBuffer.Clear();
     }
 
-    public ReleaseStatusCode(): void
+    private ReleaseStatusCode(): void
     {
         this.serverResponse.statusCode = this.StatusCode;
     }

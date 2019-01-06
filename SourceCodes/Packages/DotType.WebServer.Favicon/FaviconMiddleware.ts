@@ -19,7 +19,7 @@ export class FaviconMiddleware implements IMiddleware
             httpContext.Response.SetHeader('Content-Type', 'image/x-icon');
             httpContext.Response.SetHeader("Cache-Control", "public, max-age=2592000000");
             httpContext.Response.SetHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
-            await httpContext.Response.End(favicon);
+            await httpContext.Response.EndAsync(favicon);
         }
     }
 
