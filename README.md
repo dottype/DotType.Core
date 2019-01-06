@@ -16,10 +16,10 @@ The DotType credo is simplicity. Everything that you need for install and run th
    npm install -g typescript
    ```
 3. We are yousing [Visual Studio Code](https://code.visualstudio.com) for development. Download and install it.
-4. [Download](https://github.com/dottype/DotType.Mvc/archive/master.zip) or clone or  the repository.
+4. [Download](https://github.com/dottype/dottype/archive/master.zip) or clone or  the repository.
 5. Open Visual Studio Code, select "Open Folder" and navigate to the saved repository folder:
 
-![Visual Studio Code](https://github.com/dottype/DotType.Mvc/blob/master/Images/vscode.png)
+![Visual Studio Code](https://github.com/dottype/dottype/blob/master/Images/vscode.png)
 
 6. Press "ctrl+shift+B" (or cmd+shift+B on mac) and select build.
 7. Open terminal at Build folder an enter the following command:
@@ -29,7 +29,7 @@ The DotType credo is simplicity. Everything that you need for install and run th
    ```
 8. Open localhost in your browser:
 
-![localhost](https://github.com/dottype/DotType.Mvc/blob/master/Images/dottype_localhost.png)
+![localhost](https://github.com/dottype/dottype/blob/master/Images/dottype_localhost.png)
 
 9. Done!
 
@@ -37,6 +37,6 @@ The DotType credo is simplicity. Everything that you need for install and run th
 
 There are several ways contribute to DotType.
 
-* [Submit bugs](https://github.com/dottype/DotType.Mvc/issues) and help us verify fixes.
-* Review the [source code changes](https://github.com/dottype/DotType.Mvc/pulls).
+* [Submit bugs](https://github.com/dottype/dottype/issues) and help us verify fixes.
+* Review the [source code changes](https://github.com/dottype/dottype/pulls).
 * Help us with documentation
