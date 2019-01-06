@@ -5,7 +5,7 @@ export class Home extends Controller
 {
     public async Index(id: string): Promise<IActionResult>
     {
-        await this.HttpContext.Response.WriteAsync("This is a text from index action in home controller.");
+        await this.HttpContext.Response.WriteAsync("Welcome to DotType!");
         return this.Ok();
     }
 }
