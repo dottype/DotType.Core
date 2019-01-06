@@ -19,11 +19,11 @@ The DotType credo is simplicity. Everything that you need for install and run th
 4. [Download](https://github.com/dottype/dottype/archive/master.zip) or clone or  the repository.
 5. Open Visual Studio Code, select "Open Folder" and navigate to the saved repository folder:
 
-![Visual Studio Code](https://github.com/dottype/dottype/blob/master/images/vscode.png)
+![Visual Studio Code](https://github.com/dottype/dottype/blob/master/Images/vscode.png)
 
 6. Press "ctrl+shift+B" (or cmd+shift+B on mac) and select build.
 
-![Visual Studio Code build option](https://github.com/dottype/dottype/blob/master/images/vscode_build.png)
+![Visual Studio Code build option](https://github.com/dottype/dottype/blob/master/Images/vscode_build.png)
 
 7. Open terminal at Build folder an enter the following command:
 
@@ -32,7 +32,7 @@ The DotType credo is simplicity. Everything that you need for install and run th
    ```
 8. Open localhost in your browser:
 
-![localhost](https://github.com/dottype/dottype/blob/master/images/dottype_localhost.png)
+![localhost](https://github.com/dottype/dottype/blob/master/Images/dottype_localhost.png)
 
 9. Done!
 
