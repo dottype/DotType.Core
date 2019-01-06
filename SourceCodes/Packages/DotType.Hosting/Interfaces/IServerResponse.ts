@@ -1,4 +1,5 @@
 import { ServerResponse } from "http";
+import { Collection } from "../../DotType/Collection<T>";
 
 /** interface for a server response */
 export interface IServerResponse
@@ -17,4 +18,7 @@ export interface IServerResponse
 
     /** Sets a response header. */
     SetHeader(name: string, value: number | string | string[]): void;
+
+    /** Event that fires when IserverResponse.End() is called */
+    OnEnd: Collection<() => void>;
 }

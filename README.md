@@ -1,9 +1,9 @@
-# DotType MVC
+# DotType
 
-DotType MVC is a semi-port of .Net Core MVC to TypeScript. Useful for people that come 
+DotType is a very fast, lighweight and simple server-side framework based on Node.js, written in TypeScript. 
+
+DotType is a semi-port of .Net Core to TypeScript. Useful for people that come 
 from strongly-type languages like c# and java, and have difficulties with existing javascript frameworks.
-
-DotType MVC is a very fast, lighweight and simple server-side framework based on Node.js, written in TypeScript. 
 
 ## Installing
 The DotType credo is simplicity. Everything that you need for install and run the framework is here.
@@ -17,7 +17,7 @@ The DotType credo is simplicity. Everything that you need for install and run th
    ```
 3. We are yousing [Visual Studio Code](https://code.visualstudio.com) for development. Download and install it.
 4. [Download](https://github.com/dottype/DotType.Mvc/archive/master.zip) or clone or  the repository.
-5. Open Visual Studio Code, select "Open folder" and navigate to the saved repository folder:
+5. Open Visual Studio Code, select "Open Folder" and navigate to the saved repository folder:
 
 ![Visual Studio Code](https://github.com/dottype/DotType.Mvc/blob/master/Images/vscode.png)
 

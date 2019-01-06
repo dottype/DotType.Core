@@ -40,14 +40,27 @@ export class Response implements IServerResponse
         this.serverResponse = serverResponse;
     }
 
+    public OnEnd: Collection<() => void> = new Collection<() => void>();
+
     public End(): void;
 
     public End(chunk?: any): void
     {
+        if(this.OnEnd)
+        {
+            this.OnEnd.ForEach
+            (
+                item =>
+                {
+                    item.apply(item);
+                }
+            )
+        }
+
         this.ReleaseStatusCode();
         this.ReleaseHeaders();
         this.ReleaseWriteBuffer();
-
+        
         this.EndResponse(chunk);
     }
 
@@ -81,7 +94,7 @@ export class Response implements IServerResponse
 
     public async ReleaseHeaders(): Promise<void>
     {
-        this.headersBuffer.Foreach(item =>
+        this.headersBuffer.ForEach(item =>
         {
             this.serverResponse.setHeader(item.Name, item.Value);
         });

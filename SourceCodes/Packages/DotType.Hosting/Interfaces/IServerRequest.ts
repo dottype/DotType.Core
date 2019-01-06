@@ -1,3 +1,6 @@
+import { Collection } from "../../DotType/Collection<T>";
+import { NameValueObject } from "../../DotType/NameValueObject";
+
 /** Interface for a server request */
 export interface IServerRequest
 {
@@ -5,7 +8,7 @@ export interface IServerRequest
     readonly HttpVersion :string;
 
     /** Gets the request header. */
-    readonly Headers: string[];
+    readonly Headers: Collection<NameValueObject>;
 
     /** Gets request method. */
     readonly Method: string;

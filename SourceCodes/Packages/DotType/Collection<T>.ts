@@ -33,7 +33,7 @@ export class Collection<T>
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. 
      * If thisArg is omitted, undefined is used as the this value.
      */
-    public Foreach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void
+    public ForEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void
     {
         return this.Items.forEach(callbackfn);
     }
