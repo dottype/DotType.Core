@@ -30,7 +30,7 @@ export class RouteEngine
 
     public RegisterRoute(name: string, template: string): void;
 
-    public RegisterRoute(name: string, template: string, defaults?: Collection<NameValueObject>): void;
+    public RegisterRoute(name: string, template: string, defaults: Collection<NameValueObject>): void;
 
     /**
      * Registers a route.

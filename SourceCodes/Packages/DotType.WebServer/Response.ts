@@ -60,7 +60,7 @@ export class Response implements IServerResponse
         }
 
         await this.ReleaseStatusCode();
-        await this.ReleaseHeadersAsync();
+        await this.ReleaseHeadersBufferAsync();
         await this.ReleaseWriteBufferAsync();
         
         this.EndResponse(chunk);
@@ -94,7 +94,7 @@ export class Response implements IServerResponse
         this.writeBuffer = [];
     }
 
-    private async ReleaseHeadersAsync(): Promise<void>
+    private async ReleaseHeadersBufferAsync(): Promise<void>
     {
         this.headersBuffer.ForEach(item =>
         {
