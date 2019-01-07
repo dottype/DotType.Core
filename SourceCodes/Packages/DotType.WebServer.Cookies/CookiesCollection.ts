@@ -2,13 +2,21 @@ import { Cookie } from "./Cookie";
 import { Collection } from "../DotType/Collection<T>";
 import { CookieOptions } from "./CookieOptions";
 
+/** Class that represents a collection of cookies. */
 export class CookiesCollection
 {
+    /** Gets ir sets the items collection. */
     private items: Collection<Cookie> = new Collection<Cookie>();
 
     public Append(name: string, value: string) : void;
     public Append(name: string, value: string, cookieOptions: CookieOptions): void
 
+    /**
+     * Appends a cookie to collection.
+     * @param name The cookie name.
+     * @param value The cookie value.
+     * @param cookieOptions Object representing the cookie options.
+     */
     public Append(name: string, value: string, cookieOptions?: CookieOptions)
     {
         var cookie = new Cookie(name, value);
@@ -26,11 +34,12 @@ export class CookiesCollection
         }
 
         this.items.Add(cookie);
-
-        //var cookieValue = setCookieHeaderValue.ToString();
-        //Headers[HeaderNames.SetCookie] = StringValues.Concat(Headers[HeaderNames.SetCookie], cookieValue);
     }
 
+    /**
+     * Deletes a cookie.
+     * @param name The cookie name.
+     */
     public Delete(name: string)
     {
         var cookie = this.items.Find(t=>t.Name == name)

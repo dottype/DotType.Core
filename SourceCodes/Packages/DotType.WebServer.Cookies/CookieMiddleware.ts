@@ -2,12 +2,12 @@ import { IMiddleware } from "../DotType.WebServer/Interfaces/IMiddleware";
 import { IHttpContext } from "../DotType.Hosting/Interfaces/IHttpContext";
 import { Exception } from "../DotType/Exception";
 import { NameValueObject } from "../DotType/NameValueObject";
-import { Collection } from "../DotType/Collection<T>";
 import { IServerResponse } from "../DotType.Hosting/Interfaces/IServerResponse";
 import "../DotType.WebServer.Cookies/Extensions/DotType.WebServer.Cookie.IServerRequestExtensions";
 import "../DotType.WebServer.Cookies/Extensions/DotType.WebServer.Cookie.IServerResponseExtensions";
 import { CookiesCollection } from "./CookiesCollection";
 import { Cookie } from "./Cookie";
+import { HeaderNames } from "../DotType.Http/HeaderNames";
 
 export class CookieMiddleware implements IMiddleware
 {
@@ -21,17 +21,22 @@ export class CookieMiddleware implements IMiddleware
         {
             return;
         }
-        
         httpContext.Request.Cookies = httpContext.Response.Cookies = this.ParseCookies(httpContext.Request.Headers.Find(t=>t.Name == "cookie"));
         httpContext.Response.OnEnd.Add(this.End);
     }
     
     public async End(response: IServerResponse): Promise<void>
     {
-        response.Cookies.ForEach(item => 
+        var cookiesArray: string[] = [];
+        response.Cookies.ForEach((item: Cookie) =>
         {
-            //response.SetHeader(HeaderNames.SetCookie, "");
+            cookiesArray.push(item.toString());
         });
+
+        if(cookiesArray.length > 0)
+        {
+            response.SetHeader(HeaderNames.SetCookie, cookiesArray);
+        }
     }
 
     public async OnErrorAsync(exception: Exception): Promise<void>
@@ -52,14 +57,6 @@ export class CookieMiddleware implements IMiddleware
             return result;
         }
 
-        var n = cookieHeader.Value.split(";").forEach((item: string) => 
-        {
-            var m = / *([^=]+)=(.*)/.exec(item);
-            if(m)
-            {
-                result.Append(m[1], decodeURIComponent(m[2]));
-            }
-        });
 
         return result;
     }
