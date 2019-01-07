@@ -2,8 +2,10 @@ import { Cookie } from "./Cookie";
 import { Collection } from "../DotType/Collection<T>";
 import { CookieOptions } from "./CookieOptions";
 
-export class CookiesCollection extends Collection<Cookie>
+export class CookiesCollection
 {
+    private items: Collection<Cookie> = new Collection<Cookie>();
+
     public Append(name: string, value: string) : void;
     public Append(name: string, value: string, cookieOptions: CookieOptions): void
 
@@ -23,7 +25,7 @@ export class CookiesCollection extends Collection<Cookie>
             cookie.Secure = cookieOptions.Secure;
         }
 
-        this.Add(cookie);
+        this.items.Add(cookie);
 
         //var cookieValue = setCookieHeaderValue.ToString();
         //Headers[HeaderNames.SetCookie] = StringValues.Concat(Headers[HeaderNames.SetCookie], cookieValue);
@@ -31,12 +33,21 @@ export class CookiesCollection extends Collection<Cookie>
 
     public Delete(name: string)
     {
-        var cookie = this.Find(t=>t.Name == name)
+        var cookie = this.items.Find(t=>t.Name == name)
         {
             if(cookie)
             {
                 cookie.Expires = new Date(0);
             }
         }
+    }
+
+    /**
+     * Performs the specified action for each cookie in the collection.
+     * @param callbackfn Calls the callbackfn function one time for each element in the collection.
+     */
+    public ForEach(callbackfn: (value: Cookie, index: number, array: Cookie[]) => void): void
+    {
+        return this.items.ForEach(callbackfn);
     }
 }

@@ -4,8 +4,10 @@ import { Exception } from "../DotType/Exception";
 import { NameValueObject } from "../DotType/NameValueObject";
 import { Collection } from "../DotType/Collection<T>";
 import { IServerResponse } from "../DotType.Hosting/Interfaces/IServerResponse";
-import "../DotType.WebServer.Cookie/Extensions/DotType.WebServer.Cookie.IServerRequestExtensions";
-import "../DotType.WebServer.Cookie/Extensions/DotType.WebServer.Cookie.IServerResponseExtensions";
+import "../DotType.WebServer.Cookies/Extensions/DotType.WebServer.Cookie.IServerRequestExtensions";
+import "../DotType.WebServer.Cookies/Extensions/DotType.WebServer.Cookie.IServerResponseExtensions";
+import { CookiesCollection } from "./CookiesCollection";
+import { Cookie } from "./Cookie";
 
 export class CookieMiddleware implements IMiddleware
 {
@@ -15,7 +17,7 @@ export class CookieMiddleware implements IMiddleware
     
     public async OnRequestAsync(httpContext: IHttpContext, caller: IMiddleware): Promise<void>
     {
-        if(httpContext.Request.Url === "/favicon.ico")
+        if(httpContext.Request.Url == "/favicon.ico")
         {
             return;
         }
@@ -28,7 +30,7 @@ export class CookieMiddleware implements IMiddleware
     {
         response.Cookies.ForEach(item => 
         {
-            response.WriteAsync(item.Name); 
+            //response.SetHeader(HeaderNames.SetCookie, "");
         });
     }
 
@@ -41,9 +43,9 @@ export class CookieMiddleware implements IMiddleware
      * Parses cookies.
      * @param cookieHeader The cookie header.
      */
-    private ParseCookies(cookieHeader: NameValueObject | null): Collection<NameValueObject>
+    private ParseCookies(cookieHeader: NameValueObject | null): CookiesCollection
     {
-        var result = new Collection<NameValueObject>();
+        var result = new CookiesCollection();
 
         if(cookieHeader == null)
         {
@@ -55,7 +57,7 @@ export class CookieMiddleware implements IMiddleware
             var m = / *([^=]+)=(.*)/.exec(item);
             if(m)
             {
-                result.Add(new NameValueObject(m[1], decodeURIComponent(m[2])));
+                result.Append(m[1], decodeURIComponent(m[2]));
             }
         });
 

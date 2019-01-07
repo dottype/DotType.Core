@@ -1,5 +1,4 @@
-import { Collection } from "../../DotType/Collection<T>";
-import { NameValueObject } from "../../DotType/NameValueObject";
+import { CookiesCollection } from "../CookiesCollection";
 
 declare module "../../DotType.Hosting/Interfaces/IServerResponse"
 {
@@ -8,6 +7,6 @@ declare module "../../DotType.Hosting/Interfaces/IServerResponse"
         /**
          * Gets the Request Cookies
          */
-        Cookies: Collection<NameValueObject>;
+        Cookies: CookiesCollection;
     }
 }
