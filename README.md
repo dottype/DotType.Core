@@ -1,6 +1,6 @@
 # DotType
 
-DotType is a very fast, lightweight and simple server-side framework based on Node.js written in TypeScript. 
+Fast, lightweight and simple server-side framework based on Node.js written in TypeScript. 
 
 DotType is a semi-port of ASP.NET Core to TypeScript. Ideal for people that come 
 from strongly-type languages like c# and java, but like the beauty of Javascript.
