@@ -6,6 +6,6 @@ export class Home extends Controller
     public async Index(id: string): Promise<IActionResult>
     {
         var jsonObject = { "Name": "Foo", "Id": 1234, "Rank": 7 };
-        return await this.Json(jsonObject);
+        return this.Json(jsonObject);
     }
 }
