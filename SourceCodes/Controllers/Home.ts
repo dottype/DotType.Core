@@ -5,7 +5,7 @@ export class Home extends Controller
 {
     public async Index(id: string): Promise<IActionResult>
     {
-        await this.HttpContext.Response.WriteAsync("Welcome to DotType!");
-        return this.Ok();
+        var jsonObject = { "Name": "Foo", "Id": 1234, "Rank": 7 };
+        return this.Json(jsonObject);
     }
 }

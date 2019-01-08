@@ -6,6 +6,9 @@ export interface IServerResponse
     /** Gets or sets the status code. */
     StatusCode: number;
 
+    /** Gets or sets the reposne Content-Type */
+    ContentType: string | null;
+
     /** Ends the server response. */
     EndAsync(): Promise<void>
 
@@ -20,4 +23,5 @@ export interface IServerResponse
 
     /** Event that fires when IserverResponse.End() is called */
     OnEnd: Collection<(response: IServerResponse)=>void>;
+
 }

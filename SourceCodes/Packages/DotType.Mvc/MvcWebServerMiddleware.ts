@@ -67,7 +67,6 @@ export class MvcWebServerMiddleware implements IMiddleware
             await (functionResult as ActionResult).ExecuteResultAsync(new ActionContext(httpContext, httpContext.RouteData));
         }   
                  
-        httpContext.Response.SetHeader("Content-Type", "text/html; charset=utf-8");
         await httpContext.Response.EndAsync();
     }
 

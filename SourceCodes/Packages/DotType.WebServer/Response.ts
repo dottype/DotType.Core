@@ -19,6 +19,8 @@ export class Response implements IServerResponse
     /** Contains the server response headers buffer. */
     private headersBuffer: Collection<NameValueObject> = new Collection<NameValueObject>();
 
+    public ContentType: string | null = null;
+
     public get StatusCode(): number
     {
         return this.statusCodeBuffer;
@@ -102,6 +104,12 @@ export class Response implements IServerResponse
         });
 
         this.headersBuffer.Clear();
+
+        if(this.ContentType)
+        {
+            this.serverResponse.setHeader("Content-Type", this.ContentType);
+            this.ContentType = null;
+        }
     }
 
     private ReleaseStatusCode(): void
