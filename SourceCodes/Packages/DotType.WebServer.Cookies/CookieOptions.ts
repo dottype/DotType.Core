@@ -21,7 +21,7 @@ export class CookieOptions
     public HttpOnly: boolean; 
 
     /** Gets or sets the max-age for the cookie. */
-    public MaxAge: number | null;
+    public MaxAge: number;
 
     constructor(domain: string, path: string, expires: Date, secure: boolean, sameSite: SameSiteMode, httpOnly: boolean, maxAge: number)
     {
