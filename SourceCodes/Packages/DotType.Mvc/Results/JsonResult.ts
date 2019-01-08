@@ -2,7 +2,7 @@ import { ActionResult } from "./ActionResult";
 import { IStatusCodeActionResult } from "../Interfaces/IStatusCodeActionResult";
 import { Exception } from "../../DotType/Exception";
 import { ActionContext } from "../ActionContext";
-import { JsonResultExecutor } from "../Formatters/JsonResultExecutor";
+import { JsonResultExecutor } from "../Executors/JsonResultExecutor";
 
 /** An action result which formats the given object as JSON. */
 export class JsonResult extends ActionResult implements IStatusCodeActionResult
