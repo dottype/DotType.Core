@@ -5,6 +5,16 @@ Fast, lightweight and simple server-side framework based on Node.js written in T
 DotType is a semi-port of ASP.NET Core to TypeScript. Ideal for people that come 
 from strongly-type languages like c# and java, but like the beauty of Javascript.
 
+## Contribute
+
+We need contributors!  
+There are several ways contribute to DotType.
+
+* Submit pull requests and help us grow the product.
+* [Submit bugs](https://github.com/dottype/dottype/issues) and help us verify fixes.
+* Review the [source code changes](https://github.com/dottype/dottype/pulls).
+* Help us with documentation
+
 ## Installing
 The DotType credo is simplicity. Everything that you need for install and run the framework is here.
 
@@ -35,11 +45,3 @@ The DotType credo is simplicity. Everything that you need for install and run th
 ![localhost](https://github.com/dottype/dottype/blob/master/Images/dottype_localhost.png)
 
 9. Done!
-
-## Contributing
-
-There are several ways contribute to DotType.
-
-* [Submit bugs](https://github.com/dottype/dottype/issues) and help us verify fixes.
-* Review the [source code changes](https://github.com/dottype/dottype/pulls).
-* Help us with documentation
