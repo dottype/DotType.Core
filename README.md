@@ -7,7 +7,7 @@ from strongly-type languages like c# and java, but like the beauty of Javascript
 
 ## Contribute
 
-We need contributors!
+We need contributors!  
 There are several ways contribute to DotType.
 
 * Submit pull requests and help us grow the product.
