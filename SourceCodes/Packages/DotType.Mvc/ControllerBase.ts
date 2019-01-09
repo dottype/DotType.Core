@@ -19,7 +19,7 @@ export abstract class ControllerBase implements IController
     }
 
     /** Creates a OkResult object that produces an empty StatusCodes.Status200OK response. */
-    public Json(value: object): JsonResult
+    public Json(value: any): JsonResult
     {
         return new JsonResult(value);
     }
