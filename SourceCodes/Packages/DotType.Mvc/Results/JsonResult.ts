@@ -14,13 +14,13 @@ export class JsonResult extends ActionResult implements IStatusCodeActionResult
     public ContentType: string = "application/json";
 
     /** Gets or sets the value to be formatted. */
-    public Value: object | null = null;
+    public Value: any | null = null;
 
     /**
      * Initializes a new instance of JsonResult.
      * @param value The object to be serialized.
      */
-    constructor(value: object)
+    constructor(value: any)
     {
         super();
         if(value)

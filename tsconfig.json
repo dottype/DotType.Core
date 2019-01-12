@@ -8,6 +8,7 @@
       "resolveJsonModule": true,
       "removeComments": true,
       "sourceMap": true,
-      "strict": true
+      "strict": true,
+      "sourceRoot": "../SourceCodes"
     }
 }

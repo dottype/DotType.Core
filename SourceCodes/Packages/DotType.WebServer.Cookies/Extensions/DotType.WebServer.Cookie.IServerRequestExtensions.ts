@@ -1,6 +1,5 @@
 import { CookiesCollection } from "../CookiesCollection";
 
-
 declare module "../../DotType.Hosting/Interfaces/IServerRequest"
 {
     export interface IServerRequest 

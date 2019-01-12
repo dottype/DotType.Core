@@ -19,7 +19,7 @@ export class CookiesCollection
      */
     public Append(name: string, value: string, cookieOptions?: CookieOptions)
     {
-        var cookie = new Cookie(name, value);
+        var cookie = new Cookie(name, encodeURIComponent(value));
         cookie.Path = "/";
 
         if(cookieOptions)
@@ -58,5 +58,17 @@ export class CookiesCollection
     public ForEach(callbackfn: (value: Cookie, index: number, array: Cookie[]) => void): void
     {
         return this.items.ForEach(callbackfn);
+    }
+
+    /**
+     * Returns the value of the first Cookie in the collection where predicate is true, and null otherwise.
+     * @param predicate Find calls predicate once for each element of the collection, in ascending order, 
+     * until it finds one where predicate returns true. If such an element is found, find immediately 
+     * returns that element value. Otherwise, find returns null.
+     * @param args If provided, it will be used as the this value for each invocation of predicate.
+     */
+    public Find(predicate: (value: Cookie, index: number, obj: Cookie[]) => boolean, args?: any): Cookie | null
+    {
+        return this.items.Find(predicate, args);
     }
 }
