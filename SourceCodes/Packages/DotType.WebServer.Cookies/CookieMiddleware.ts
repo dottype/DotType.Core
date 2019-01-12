@@ -57,6 +57,15 @@ export class CookieMiddleware implements IMiddleware
             return result;
         }
 
+        var cookiesArray = cookieHeader.Value.split(";");
+        cookiesArray.forEach((element: string) => 
+        {
+            var m = / *([^=]+)=(.*)/.exec(element);
+            if(m)
+            {
+                result.Append(m[1], decodeURIComponent(m[2]));
+            }
+        });
 
         return result;
     }

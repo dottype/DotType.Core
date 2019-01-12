@@ -19,7 +19,7 @@ export class CookiesCollection
      */
     public Append(name: string, value: string, cookieOptions?: CookieOptions)
     {
-        var cookie = new Cookie(name, value);
+        var cookie = new Cookie(name, encodeURIComponent(value));
         cookie.Path = "/";
 
         if(cookieOptions)
