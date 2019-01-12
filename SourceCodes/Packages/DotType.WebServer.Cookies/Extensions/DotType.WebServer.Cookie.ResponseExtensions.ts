@@ -1,5 +1,3 @@
-import { Collection } from "../../DotType/Collection<T>";
-import { NameValueObject } from "../../DotType/NameValueObject";
 import { CookiesCollection } from "../CookiesCollection";
 
 
