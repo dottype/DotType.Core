@@ -1,4 +1,4 @@
-import { JsonResult } from "../Results/JSonResult";
+import { JsonResult } from "../Results/JsonResult";
 import { ActionContext } from "../ActionContext";
 import { Exception } from "../../DotType/Exception";
 

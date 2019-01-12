@@ -1,7 +1,7 @@
 import { IHttpContext } from "../DotType.Hosting/Interfaces/IHttpContext";
 import { IController } from "./Interfaces/IController";
 import { OkResult } from "./Results/OkResult";
-import { JsonResult } from "./Results/JSonResult";
+import { JsonResult } from "./Results/JsonResult";
 import { ContentResult } from "./Results/ContentResult";
 
 /**
