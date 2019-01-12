@@ -5,6 +5,14 @@
             "request": "attach",
             "name": "Attach",
             "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceRoot}/Build/Program.js",
+            "cwd": "${workspaceRoot}",
+            "sourceMaps": true
         }
     ]
 }
