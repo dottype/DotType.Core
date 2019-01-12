@@ -51,8 +51,6 @@ export class CookiesCollection
         }
     }
 
-
-
     /**
      * Performs the specified action for each cookie in the collection.
      * @param callbackfn Calls the callbackfn function one time for each element in the collection.
