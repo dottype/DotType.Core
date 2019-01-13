@@ -13,7 +13,7 @@ export class CookieMiddleware implements IMiddleware
 {
     public readonly Name: string = "Cookie Middleware";
     public readonly Version: string = "0.0.1-alpha";
-    public Order: number = -1000;
+    public Order: number = -10000; //Should be first
     
     public async OnRequestAsync(httpContext: IHttpContext, caller: IMiddleware): Promise<void>
     {
