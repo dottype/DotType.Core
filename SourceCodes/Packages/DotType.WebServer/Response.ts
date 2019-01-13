@@ -3,6 +3,7 @@ import { ServerResponse } from "http";
 import { Check } from "../DotType/Check";
 import { NameValueObject } from "../DotType/NameValueObject";
 import { Collection } from "../DotType/Collection<T>";
+import { IHttpContext } from "../DotType.Hosting/Interfaces/IHttpContext";
 
 /** Represents a http context response class */
 export class Response implements IServerResponse
@@ -42,7 +43,7 @@ export class Response implements IServerResponse
         this.serverResponse = serverResponse;
     }
 
-    public OnEnd: Collection<(response: IServerResponse)=>void> = new Collection<(response: IServerResponse)=>void>();
+    public OnEnd: Collection<(...args: any[])=>void> = new Collection<(...args: any[])=>void>();
 
     public async EndAsync(): Promise<void>;
 
@@ -52,7 +53,8 @@ export class Response implements IServerResponse
         {
             this.OnEnd.ForEach(item =>
             {
-                item.call(item, this);
+                type TestArguments = Parameters<typeof item>;
+                item.call(item);
             });
             this.OnEnd.Clear();
         }
