@@ -41,7 +41,7 @@ export class SessionMiddleware implements IMiddleware
                 session.Id = sessionCookie.Value;
                 if (this.sessionManager.SessionStorage)
                 {
-                    //await this.sessionManager.SessionStorage.LoadAsync(session.Id);
+                    await this.sessionManager.SessionStorage.LoadAsync(session);
                 }
             }
             else

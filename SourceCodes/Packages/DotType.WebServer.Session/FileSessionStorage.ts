@@ -1,15 +1,29 @@
 import { ISessionStorage } from "./Interfaces/ISessionStorage"
 import { ISession } from "./Interfaces/ISession";
+import { FileSystem } from "../DotType/FileSystem";
+import { NameValueObject } from "../DotType/NameValueObject";
 
 export class FileSessionStorage implements ISessionStorage
 {
-    public LoadAsync(session: ISession): Promise<ISession>
+    public async LoadAsync(session: ISession): Promise<ISession>
     {
-        throw new Error("Method not implemented.");
+        var fileData = FileSystem.Load("./Sessions/" + session.Id);
+        if(fileData)
+        {
+            JSON.parse(fileData).Items.forEach((element: any) => 
+            {
+                session.Items.Add(new NameValueObject(element.name, element.value));    
+            });
+        }
+        
+        return session;
     }
     
-    public SaveAsync(session: ISession): Promise<void>
+    public async SaveAsync(session: ISession): Promise<void>
     {
-        throw new Error("Method not implemented.");
+        if(session && session.Items.Count > 0)
+        {
+            await FileSystem.SaveFile("./Sessions/"+ session.Id, JSON.stringify(session.Items));
+        }
     }
 }

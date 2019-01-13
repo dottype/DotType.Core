@@ -1,4 +1,4 @@
-import { Session } from "../Session";
+import { ISession } from "../Interfaces/ISession";
 
 declare module "../../DotType.Hosting/Interfaces/IHttpContext"
 {
@@ -7,6 +7,6 @@ declare module "../../DotType.Hosting/Interfaces/IHttpContext"
         /**
          * Gets or sets the Session.
          */
-        Session: Session;
+        Session: ISession;
     }
 }
