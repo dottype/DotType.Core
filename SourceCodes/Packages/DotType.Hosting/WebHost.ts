@@ -54,7 +54,7 @@ export class WebHost
      * Inidicates that application should use the given type as startup class.
      * @param type The type that will be used as startup class.
      */
-    public UseStartup(type: { new (): IStartup }): this
+    public UseStartup(type: { new (): IStartup }): WebHost
     {
         this.startup = new type();
         return this;

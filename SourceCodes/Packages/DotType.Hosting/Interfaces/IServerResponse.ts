@@ -21,7 +21,7 @@ export interface IServerResponse
     /** Sets a response header. */
     SetHeader(name: string, value: number | string | string[]): void;
 
-    /** Event that fires when IserverResponse.End() is called */
-    OnEnd: Collection<(response: IServerResponse)=>void>;
+    /** Event that fires when IServerResponse.End() is called */
+    OnEnd: Collection<(...args: any[]) => void>;
 
 }

@@ -64,17 +64,17 @@ export class Collection<T>
         return this.Items.indexOf(item) >= 0;
     }
 
-    /**
-     * Removes the item from collection.
-     * @param item The item to remove from collection.
-     */
-    public Remove(item: T): void
+    public Remove(predicate: (value: T, index: number, obj: T[]) => boolean): void
     {
-        this.Items.slice(this.Items.indexOf(item), 1);
+        var item = this.Items.find(predicate);
+        if(item)
+        {
+            this.Items.splice(this.Items.indexOf(item), 1);
+        }
     }
 
     /**
-     * Add an item to collection.
+     * Adds an item to collection.
      * @param item The item to add to collection.
      */
     public Add(item: T): number

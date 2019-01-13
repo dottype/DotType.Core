@@ -13,7 +13,7 @@ export class CookieMiddleware implements IMiddleware
 {
     public readonly Name: string = "Cookie Middleware";
     public readonly Version: string = "0.0.1-alpha";
-    public Order: number = -1000;
+    public Order: number = -10000; //Should be first
     
     public async OnRequestAsync(httpContext: IHttpContext, caller: IMiddleware): Promise<void>
     {
@@ -21,21 +21,22 @@ export class CookieMiddleware implements IMiddleware
         {
             return;
         }
-        httpContext.Request.Cookies = httpContext.Response.Cookies = this.ParseCookies(httpContext.Request.Headers.Find(t=>t.Name == "cookie"));
-        httpContext.Response.OnEnd.Add(this.End);
+        httpContext.Request.Cookies = this.ParseCookies(httpContext.Request.Headers.Find(t=>t.Name == "cookie"));
+        httpContext.Response.Cookies = new CookiesCollection();
+        httpContext.Response.OnEnd.Add(async () => await this.End(httpContext));
     }
     
-    public async End(response: IServerResponse): Promise<void>
+    public async End(httpContext: IHttpContext): Promise<void>
     {
         var cookiesArray: string[] = [];
-        response.Cookies.ForEach((item: Cookie) =>
+        httpContext.Response.Cookies.ForEach((item: Cookie) =>
         {
             cookiesArray.push(item.toString());
         });
 
         if(cookiesArray.length > 0)
         {
-            response.SetHeader(HeaderNames.SetCookie, cookiesArray);
+            httpContext.Response.SetHeader(HeaderNames.SetCookie, cookiesArray);
         }
     }
 

@@ -3,7 +3,7 @@ import { IActionResult } from "../Packages/DotType.Mvc/Interfaces/IActionResult"
 
 export class Home extends Controller
 {
-    public async Index(id: string): Promise<IActionResult>
+    public async Index(): Promise<IActionResult>
     {
         return this.Content("some content", "application/json");
 
