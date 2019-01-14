@@ -1,0 +1,31 @@
+{
+    "name": "node-js-dottype-test",
+    "version": "0.0.1",
+    "description": "A sample DotType app using Node.js",
+    "engines": 
+    {
+      "node": "11.x"
+    },
+    "main": "Build/Program.js",
+    "scripts": 
+    {
+      "start": "node Build/Program.js"
+    },
+    "dependencies": 
+    {
+    },
+    "devDependencies": 
+    {
+    },
+    "repository": 
+    {
+      "type": "git",
+      "url": "https://github.com/dottype/DotType"
+    },
+    "keywords": [
+      "node",
+      "heroku",
+      "dottype"
+    ],
+    "license": "Apache"
+  }
