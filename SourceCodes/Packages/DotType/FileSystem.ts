@@ -33,7 +33,11 @@ export class FileSystem
     {
         try
         {
-            return fs.readFileSync(fileName, 'utf8');
+            if (fs.existsSync(fileName))
+            {
+                return fs.readFileSync(fileName, 'utf8');
+            }
+            return null;
         }
         catch (exception)
         {

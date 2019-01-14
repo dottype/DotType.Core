@@ -5,7 +5,7 @@ export class Home extends Controller
 {
     public async Index(): Promise<IActionResult>
     {
-        return this.Content("some content", "application/json");
+        return this.Content('{"name":"John", "age":30}', "application/json");
 
         // OR
         // var jsonObject = { "Name": "Foo", "Id": 1234, "Rank": 7 };
