@@ -11,6 +11,7 @@ import { ActionContext } from "./ActionContext";
 import { ActionResult } from "./Results/ActionResult";
 import "./Extensions/DotType.Mvc.IHttpContextExtensions";
 import "../DotType/Extensions/DotType.StringExtensions"
+import { StatusCodes } from "../DotType.Http/StatusCodes";
 
 export class MvcWebServerMiddleware implements IMiddleware
 {
@@ -47,9 +48,21 @@ export class MvcWebServerMiddleware implements IMiddleware
         httpContext.RouteData = await this.CreateRouteDataAsync(parsedUrl);
         var controllerImport = await import("../../Controllers/" + httpContext.RouteData.ControllerName);
         var controllerObject = new controllerImport[Object.keys(controllerImport)[0]];
-        var actionName = httpContext.RouteData.ActionName.ToPascalCase();
 
-        if (typeof controllerObject[actionName] !== 'function')
+        if(controllerObject.HttpMethod)
+        {
+            if(httpContext.Request.Method !== controllerObject.HttpMethod)
+            {
+                httpContext.Response.StatusCode = StatusCodes.Status404NotFound;
+                await httpContext.Response.EndAsync();
+                return;
+            }
+        }
+
+        var actionName = httpContext.RouteData.ActionName.ToPascalCase();
+        var actionObject = controllerObject[actionName];
+        
+        if (typeof actionObject !== 'function')
         {
             throw new Exception(Exception.EXCEPTION_OBJECT_NOT_FOUND + ": '" + actionName + "'");
         }
@@ -61,7 +74,8 @@ export class MvcWebServerMiddleware implements IMiddleware
         }
 
         controllerObject.HttpContext = httpContext;
-        var functionResult = await controllerObject[actionName].apply(controllerObject, httpContext.RouteData.Parameters);
+
+        var functionResult = await actionObject.apply(controllerObject, httpContext.RouteData.Parameters);
         if(functionResult instanceof ActionResult)
         {
             await (functionResult as ActionResult).ExecuteResultAsync(new ActionContext(httpContext, httpContext.RouteData));
